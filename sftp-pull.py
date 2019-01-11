@@ -11,6 +11,11 @@
 ##########################################################
 
 import paramiko
+import time
+import shutil
+
+#Today's date for the filename append
+timestamp = time.strftime("%m%d%Y_")
 
 #Connetion setup
 host = "sftp.centreteksolutions.net"
@@ -30,8 +35,12 @@ afiles = sftp.listdir('/files')
 
 #Loop through the files we found above and save them
 for file in afiles:
-    #add the filename to the output path
+    #Add the filename to the output path
     saveName = localpath + file
+    #Archive off any files that already exist, just in case
+    rename = localpath + '\\Archive\\' + timestamp + file
+    shutil.move(saveName, rename)
+    #Pull new files
     file = '/files/' + file
     sftp.get(file,saveName)
 
