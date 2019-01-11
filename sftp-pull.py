@@ -14,8 +14,8 @@ import paramiko
 import time
 import shutil
 
-#Today's date for the filename append
-timestamp = time.strftime("%m%d%Y_")
+#Today's date and time for the filename append
+timestamp = time.strftime("%m%d%Y_%H:%M:%S_")
 
 #Connetion setup
 host = "sftp.centreteksolutions.net"
