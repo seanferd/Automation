@@ -1,7 +1,8 @@
 #############################################################
 #                         sftp-pull.py 
 #                         Sean R Ford
-#                          01/11/2019
+#                         MU Health Care
+#                         01/11/2019
 #
 #   This script connects to an external SFTP server and 
 #   saves the files it finds
@@ -14,7 +15,7 @@ import paramiko
 import time
 import shutil
 
-#Today's date and time for the filename append
+#Today's date and time for the filename prepend
 timestamp = time.strftime("%m%d%Y_%H%M%S_")
 
 #Connetion setup
