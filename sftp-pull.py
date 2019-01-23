@@ -30,7 +30,7 @@ transport.connect(username = username, password = password)
 sftp = paramiko.SFTPClient.from_transport(transport)
 
 #Where we want to store the files we find
-localpath = '\\\\umh.edu\\data\\Personnel_Payroll\\Salary\\CENSUS\\CEDStudents\\SFTP\\'
+localpath = '\\\\umh.edu\\data\\Personnel_Payroll\\Salary\\HRIS\\Student Vetting\\Database\\SFTP\\'
 #Array of all the files we find on the server
 afiles = sftp.listdir('/files')
 
@@ -40,7 +40,12 @@ for file in afiles:
     saveName = localpath + file
     #Archive off any files that already exist, just in case
     rename = localpath + '\\Archive\\' + timestamp + file
-    shutil.move(saveName, rename)
+    #If we don't find any files to move, don't error out
+    try:
+        shutil.move(saveName, rename)
+    except:
+        pass
+        #print('No files found to move to Archive; continuing')
     #Pull new files
     file = '/files/' + file
     sftp.get(file,saveName)
