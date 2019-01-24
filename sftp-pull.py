@@ -16,7 +16,7 @@ import time
 import shutil
 
 #Today's date and time for the filename prepend
-timestamp = time.strftime("%m%d%Y_%H%M%S_")
+timestamp = time.strftime("%Y%m%d_%H%M%S_")
 
 #Connetion setup
 host = "sftp.centreteksolutions.net"
